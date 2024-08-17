@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                <div class="row mx-2">
+                    <h1 class="display-4">{{task.title}}</h1>
+                    {% if error %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{error}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="flex-row gap-3">
+                        {{form}}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Update</button>
+                </div>
+            </form>
+            <div class="d-flex justify-content-between mt-3 mx-2 gap-3">
+                <div class="flex-grow-1 me-1">
+                    <form action="{% url 'task_complete' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-success w-100">Complete</button>
+                    </form>
+                </div>
+                <div class="flex-grow-1 ms-1">
+                    <form action="{% url 'task_delete' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger w-100">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

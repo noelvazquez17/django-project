@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <form method="POST" class="card card-body shadow">
+                <h1 class="text-center">Sign Up</h1>
+                {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{error}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% csrf_token %}
+                <div class="row d-flex gap-3">
+                    <div>
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div>
+                        <label for="password1" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password1" name="password1">
+                    </div>
+                    <div>
+                        <label for="password2" class="form-label">Confirm password:</label>
+                        <input type="password" class="form-control" id="password2" name="password2">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

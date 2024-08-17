@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">Welcome to the Django Project</h1>
+                    <p class="lead">This is a simple Django project that allows you to manage your tasks.</p>
+                    <hr class="my-4">
+                    <p>You can create, update, view and delete tasks</p>
+                    {% if not user.is_authenticated %}
+                        <div class="text-center gap-3">
+                            <a class="btn btn-secondary btn-lg" href="/signup" role="button">Sign up</a>
+                            <a class="btn btn-primary btn-lg" href="/signin" role="button">Sign in</a>
+                        </div>
+                    {% else %}
+                        <div class="text-center gap-3">
+                            <a class="btn btn-primary btn-lg" href="/tasks" role="button">View Tasks</a>
+                            <a class="btn btn-secondary btn-lg" href="/tasks/create" role="button">Create Task</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

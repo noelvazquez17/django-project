@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+            <form method="POST" class="card card-body shadow">
+                <h1 class="text-center">Sign In</h1>
+                {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{error}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% csrf_token %}
+                <div class="row d-flex gap-3">
+                    <div>
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div>
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
